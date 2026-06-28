@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import './index.css';
 
-// Use deployed backend URL if available, otherwise use localhost for development
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api/tasks';
+// Use Vercel's backend route prefix for production, localhost for development
+const API_URL = import.meta.env.PROD 
+  ? '/_/backend/api/tasks' 
+  : 'http://localhost:5000/api/tasks';
 
 function App() {
   const [tasks, setTasks] = useState([]);
